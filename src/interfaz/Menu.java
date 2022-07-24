@@ -34,7 +34,7 @@ public class Menu extends JFrame {
     public Menu() {
         this.setContentPane(rootPanel);
         this.pack();
-/*
+
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -66,9 +66,8 @@ public class Menu extends JFrame {
                 respuestaLabel.setText(Sentenciasql.consultar(producto));
                 producto.print();
             }
-        });*/
+        });
     }
-
 
     public void getDatos(){
         id = in_id.getText();
@@ -80,13 +79,11 @@ public class Menu extends JFrame {
         producto.setValorBase(valorBase);
         producto.setId(id);
     }
+
     public static void main(String[] args) {
         JFrame frame = new Menu();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }
