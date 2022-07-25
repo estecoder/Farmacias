@@ -1,17 +1,18 @@
 
-import interfaz.Menu;
-import logica.Producto;
-import logica.Sentenciasql;
-import logica.DBconnection;
+import Controlador.Controller;
+import Vista.Menu;
+import Modelo.Producto;
+
 
 public class Main {
     public static void main(String[] args) {
-        DBconnection db = new DBconnection();
+        System.out.println("====================================FARMACIAS 2022====================================");
+
         Producto p = new Producto();
         Menu vista = new Menu();
 
-        //Controller control = new Controller(p, vista);
-        //control.iniciar();
+        Controller control = new Controller(p, vista);
+        control.iniciar();
 
     }
 }

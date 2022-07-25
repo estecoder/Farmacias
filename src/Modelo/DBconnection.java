@@ -1,4 +1,6 @@
-package logica;
+package Modelo;
+
+import org.omg.CORBA.StringHolder;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -11,7 +13,13 @@ import java.util.logging.Logger;
 
 public class DBconnection {
     // Configuracion de la conexion a la base de datos
-    private String url = "";
+    private String url = "", url2;
+    private String host = "localhost";
+    private String password = "toorpass";
+    private String user = "root";
+    private String port = "3306";
+    private String database = "farmacias";
+
     public Connection con = null;
     private Statement stmt = null;
     private ResultSet rs = null;
@@ -24,6 +32,7 @@ public class DBconnection {
         url = "jdbc:sqlite:"+path+"/farmacia.db";
         try {
             // Realizar la conexion
+
             con = DriverManager.getConnection(url);
             if (con != null) {
                 DatabaseMetaData meta = con.getMetaData();
@@ -43,7 +52,7 @@ public class DBconnection {
             try {
                 con.close();
             } catch (SQLException sqlex) {
-                Logger.getLogger(Modelo.ConexionBD.class.getName()).log(Level.SEVERE, null, sqlex);
+                Logger.getLogger(Modelo.DBconnection.class.getName()).log(Level.SEVERE, null, sqlex);
             }
         }
     }
