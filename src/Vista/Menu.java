@@ -3,7 +3,9 @@ package Vista;
 import Modelo.DBconnection;
 import Modelo.Producto;
 
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 
 public class Menu extends JFrame {
@@ -27,11 +29,17 @@ public class Menu extends JFrame {
     public JLabel respuestaLabel;
 
     public Menu() {
+
+
+        tablaProductos.setModel(new DefaultTableModel(
+                null,
+                new String[]{"ID","NOMBRE","TEMPERATURA","VALOR BASE","COSTO"}
+        ));
         this.setContentPane(rootPanel);
         this.pack();
     }
 
-
+    /*
     public void getDatos() {
         id = in_id.getText();
         nombre = in_nombre.getText();
@@ -41,7 +49,7 @@ public class Menu extends JFrame {
         producto.setTemperatura(temperatura);
         producto.setValorBase(valorBase);
         producto.setId(id);
-    }
+    }*/
 
     private void createUIComponents() {
         // TODO: place custom component creation code here

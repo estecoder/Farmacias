@@ -47,12 +47,15 @@ public class Sentenciasql {
         return state;
     }
 
-    public static String consultar(Producto p){ return "consultado";}
+    public static String consultar(Producto p){
+
+        return "consultado";
+    }
 
 
     public static boolean eliminar(Producto p){
         DBconnection db = new DBconnection();
-        String sentencia = "DELETE FROM Empleados "
+        String sentencia = "DELETE FROM productos "
                 + "WHERE id = "+ p.getId() +";";
         if (p.getId()!=null) {
             if (db.setAutoCommitBD(false)) {
@@ -91,7 +94,7 @@ public class Sentenciasql {
                     + "nombre='" + p.getNombre() + "',"
                     + "temperatura=" + p.getTemperatura() + ","
                     + "valor_base=" + p.getValorBase() + ","
-                    + "costo=" + p.getCosto()
+                    + "costo=" + p.getCosto()+" "
                     + "WHERE id='" + p.getId() + "';";
             if (db.setAutoCommitBD(false)) {
                 if (db.actualizarBD(sentencia)) {
@@ -136,6 +139,8 @@ public class Sentenciasql {
 
                 listaProductos.add(prod);
             }
+        } else {
+            System.out.println("vacio linea 140 sentsql");
         }
         db.closeConnection(db.getConnection());
         return listaProductos;

@@ -34,14 +34,17 @@ public class Controller implements ActionListener{
             productoList = sentProd.listar();
             DefaultTableModel model = (DefaultTableModel) vista.tablaProductos.getModel();
             model.setRowCount(0);
+            System.out.println("36 iniciar");
+            System.out.println(productoList);
             for (Producto pl : productoList){
                 Object[] fila = {pl.getId(), pl.getNombre(), pl.getTemperatura(), pl.getValorBase(), pl.getCosto()};
+                System.out.println("39 iniciar");
+                System.out.println(fila);
                 model.addRow(fila);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         this.vista.setTitle("Farmacias");
         this.vista.setVisible(true);
         this.vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -122,6 +125,23 @@ public class Controller implements ActionListener{
                 model.setRowCount(0);
                 for (Producto pl : productoList){
                     Object[] fila = {pl.getId(), pl.getNombre(), pl.getTemperatura(), pl.getValorBase(), pl.getCosto()};
+                    model.addRow(fila);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+        if (e.getSource()==vista.consultarButton){
+            try {
+                productoList = sentProd.listar();
+                DefaultTableModel model = (DefaultTableModel) vista.tablaProductos.getModel();
+                model.setRowCount(0);
+                for (Producto pl : productoList){
+                    Object[] fila = {pl.getId(), pl.getNombre(), pl.getTemperatura(), pl.getValorBase(), pl.getCosto()};
+                    System.out.println("128 consultar");
+                    System.out.println(fila);
                     model.addRow(fila);
                 }
             } catch (SQLException ex) {
