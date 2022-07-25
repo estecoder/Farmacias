@@ -1,9 +1,7 @@
-package controlador;
+package Controlador;
 
-import interfaz.*;
-import logica.*;
-
-import javax.swing.*;
+import Vista.*;
+import Modelo.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class Controller implements ActionListener{
     private Producto prod;
     private Sentenciasql sentProd;
+    private List<Producto> productoList;
     private Menu vista;
 
     public Controller (Producto p, Menu vista) {
@@ -31,6 +30,18 @@ public class Controller implements ActionListener{
     }
 
     public void iniciar(){
+        try {
+            productoList = sentProd.listar();
+            DefaultTableModel model = (DefaultTableModel) vista.tablaProductos.getModel();
+            model.setRowCount(0);
+            for (Producto pl : productoList){
+                Object[] fila = {pl.getId(), pl.getNombre(), pl.getTemperatura(), pl.getValorBase(), pl.getCosto()};
+                model.addRow(fila);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         this.vista.setTitle("Farmacias");
         this.vista.setVisible(true);
         this.vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,6 +66,17 @@ public class Controller implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Error en el registro");
             }
 
+            try {
+                productoList = sentProd.listar();
+                DefaultTableModel model = (DefaultTableModel) vista.tablaProductos.getModel();
+                model.setRowCount(0);
+                for (Producto pl : productoList){
+                    Object[] fila = {pl.getId(), pl.getNombre(), pl.getTemperatura(), pl.getValorBase(), pl.getCosto()};
+                    model.addRow(fila);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         if (e.getSource()==vista.eliminarButton){
@@ -64,6 +86,18 @@ public class Controller implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Borrado exitoso");
             } else {
                 JOptionPane.showMessageDialog(null, "Error en borrado");
+            }
+
+            try {
+                productoList = sentProd.listar();
+                DefaultTableModel model = (DefaultTableModel) vista.tablaProductos.getModel();
+                model.setRowCount(0);
+                for (Producto pl : productoList){
+                    Object[] fila = {pl.getId(), pl.getNombre(), pl.getTemperatura(), pl.getValorBase(), pl.getCosto()};
+                    model.addRow(fila);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -82,6 +116,17 @@ public class Controller implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Error en la actualizacion");
             }
 
+            try {
+                productoList = sentProd.listar();
+                DefaultTableModel model = (DefaultTableModel) vista.tablaProductos.getModel();
+                model.setRowCount(0);
+                for (Producto pl : productoList){
+                    Object[] fila = {pl.getId(), pl.getNombre(), pl.getTemperatura(), pl.getValorBase(), pl.getCosto()};
+                    model.addRow(fila);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         }
 

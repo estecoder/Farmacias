@@ -1,6 +1,4 @@
-package logica;
-
-import com.sun.codemodel.internal.JStatement;
+package Modelo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,16 +125,17 @@ public class Sentenciasql {
         List<Producto> listaProductos = new ArrayList<>();
         ResultSet rs = db.consultarBD(sentencia);
         Producto prod;
+        if (rs != null){
+            while(rs.next()){
+                prod = new Producto();
+                prod.setId(rs.getString("id"));
+                prod.setNombre(rs.getString("nombre"));
+                prod.setTemperatura(rs.getDouble("temperatura"));
+                prod.setValorBase(rs.getInt("valor_base"));
+                prod.setCosto(rs.getDouble("costo"));
 
-        while(rs.next()){
-            prod = new Producto();
-            prod.setId(rs.getString("id"));
-            prod.setNombre(rs.getString("nombre"));
-            prod.setTemperatura(rs.getDouble("temperatura"));
-            prod.setValorBase(rs.getInt("valor_base"));
-            prod.setCosto(rs.getDouble("costo"));
-
-            listaProductos.add(prod);
+                listaProductos.add(prod);
+            }
         }
         db.closeConnection(db.getConnection());
         return listaProductos;

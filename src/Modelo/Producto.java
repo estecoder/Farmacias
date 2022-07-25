@@ -1,4 +1,4 @@
-package logica;
+package Modelo;
 
 public class Producto {
     private String id, nombre;

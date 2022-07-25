@@ -1,4 +1,4 @@
-package logica;
+package Modelo;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -43,7 +43,7 @@ public class DBconnection {
             try {
                 con.close();
             } catch (SQLException sqlex) {
-                Logger.getLogger(Modelo.ConexionBD.class.getName()).log(Level.SEVERE, null, sqlex);
+                Logger.getLogger(Modelo.DBconnection.class.getName()).log(Level.SEVERE, null, sqlex);
             }
         }
     }

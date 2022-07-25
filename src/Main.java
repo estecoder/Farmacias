@@ -1,7 +1,6 @@
-import controlador.Controller;
-import interfaz.Menu;
-import logica.Producto;
-import logica.Sentenciasql;
+import Controlador.Controller;
+import Vista.Menu;
+import Modelo.Producto;
 
 public class Main {
     public static void main(String[] args) {
