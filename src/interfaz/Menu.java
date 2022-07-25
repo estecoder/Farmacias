@@ -20,16 +20,16 @@ public class Menu extends JFrame {
 
     private JPanel rootPanel;
     private JTable tablaProductos;
-    private JButton guardarButton;
-    private JButton actualizarButton;
-    private JButton eliminarButton;
-    private JButton consultarButton;
-    private JTextField in_valorBase;
-    private JTextField in_temperatura;
-    private JTextField in_nombre;
-    private JTextField in_id;
+    public JButton guardarButton;
+    public JButton actualizarButton;
+    public JButton eliminarButton;
+    public JButton consultarButton;
+    public JTextField in_valorBase;
+    public JTextField in_temperatura;
+    public JTextField in_nombre;
+    public JTextField in_id;
     private JScrollPane tablaPanel;
-    private JLabel respuestaLabel;
+    public JLabel respuestaLabel;
 
     public Menu() {
         this.setContentPane(rootPanel);
